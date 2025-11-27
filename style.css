@@ -37,6 +37,7 @@ h1 {
     text-align: center;
     margin-top: 20px;
     margin-left: 6vw;
+    /* margin-bottom: 5vw; */
 }
 
 .yellow {
@@ -87,33 +88,53 @@ h1 {
 
 }
 
-
-
-
+.input-container{
+    margin-top: 3vw;
+}
 
 
 .input-x {
     position: absolute;
     right: 55px;
-    top: 56%;
-    transform: translateY(-50%);
+    top: 54%;
+    /* transform: translateY(-50%); */
 }
 
 .input-x-purple {
     /* visibility: hidden; */
-    /* display: none; */
-    position: absolute; 
+    display: none;
+    position: absolute;
     right: 55px;
-    top: 56%; 
-    transform: translateY(-50%);
+    top: 54%;
+    /* transform: translateY(-50%); */
 
 }
 
 
+.sort-down-gray {
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    right: 44px;
+}
 
+.sort-up-gray {
+    display: none;
+    position: absolute;
+    top: 40%;
+    right: 44px;
+}
 
+.sort-down-black {
+    display: none;
+    position: absolute;
+    top: 40%;
+    right: 44px;
+}
 
-
-
-
-
+.sort-up-black {
+    display: none;
+    position: absolute;
+    top: 40%;
+    right: 44px;
+}
