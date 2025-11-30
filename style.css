@@ -15,7 +15,6 @@ body {
 }
 
 .container {
-    position: relative;
     padding-bottom: 30px;
     border: solid #C4C4C4 1px;
     width: 350px;
@@ -23,7 +22,6 @@ body {
 }
 
 input {
-    position: relative;
     display: block;
     margin: 30px auto 0 auto;
     width: 80%;
@@ -37,7 +35,6 @@ h1 {
     text-align: center;
     margin-top: 20px;
     margin-left: 6vw;
-    /* margin-bottom: 5vw; */
 }
 
 .yellow {
@@ -46,8 +43,8 @@ h1 {
     border-top-left-radius: 15px;
     height: 30px;
     background-color: #FFDC40;
-
 }
+
 
 .adder {
     display: flex;
@@ -78,17 +75,19 @@ h1 {
     margin-left: 15px;
     color: white;
     border: none;
-
 }
+
 
 
 .add {
     color: white;
     padding-left: 30px;
-
 }
 
-.input-container{
+
+.input-container {
+    position: relative;
+    display: block;
     margin-top: 3vw;
 }
 
@@ -96,45 +95,86 @@ h1 {
 .input-x {
     position: absolute;
     right: 55px;
-    top: 54%;
-    /* transform: translateY(-50%); */
+    top: 25%;
 }
 
 .input-x-purple {
-    /* visibility: hidden; */
     display: none;
     position: absolute;
     right: 55px;
-    top: 54%;
-    /* transform: translateY(-50%); */
-
+    top: 25%;
 }
 
 
 .sort-down-gray {
     display: inline-block;
     position: absolute;
-    top: 40%;
+    top: -65%;
     right: 44px;
 }
 
 .sort-up-gray {
     display: none;
     position: absolute;
-    top: 40%;
+    top: -65%;
     right: 44px;
 }
 
 .sort-down-black {
     display: none;
     position: absolute;
-    top: 40%;
+    top: -65%;
     right: 44px;
 }
 
 .sort-up-black {
     display: none;
     position: absolute;
-    top: 40%;
+    top: -65%;
     right: 44px;
 }
+
+.delete{
+    /* width: 18px; */
+    cursor: pointer;
+}
+
+.delete-purple{
+    display: none;
+    /* width: 18px; */
+    cursor: pointer;
+}
+
+
+.list {
+    width: 80%;
+    margin: 30px 35px auto;
+    border: solid #C4C4C4 1px;
+    border-radius: 10px;
+    padding: 5px 15px;
+    display: none;
+}
+
+
+
+.area-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+
+}
+
+
+/* .icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+} */
+
+
+
+
+
