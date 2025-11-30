@@ -15,6 +15,7 @@ body {
 }
 
 .container {
+    position: relative;
     padding-bottom: 30px;
     border: solid #C4C4C4 1px;
     width: 350px;
@@ -57,6 +58,11 @@ h1 {
     background-color: #833AE0;
 }
 
+.adder:hover{
+    cursor: pointer;
+}
+
+
 .plus {
     display: flex;
     height: 40px;
@@ -96,6 +102,7 @@ h1 {
     position: absolute;
     right: 55px;
     top: 25%;
+
 }
 
 .input-x-purple {
@@ -103,61 +110,68 @@ h1 {
     position: absolute;
     right: 55px;
     top: 25%;
+    /* cursor: pointer; */
 }
 
+.sorts {
+    /* display: none; */
+    position: absolute;
+    top: 107px;
+    left: 280px;
+}
 
 .sort-down-gray {
-    display: inline-block;
-    position: absolute;
-    top: -65%;
-    right: 44px;
+    display: block;
+    /* position: absolute; */
+    top: 20px;
+    left: 280px;
 }
 
 .sort-up-gray {
     display: none;
-    position: absolute;
-    top: -65%;
-    right: 44px;
+    /* position: absolute; */
+    top: 20px;
+    left: 280px;
 }
 
 .sort-down-black {
     display: none;
-    position: absolute;
-    top: -65%;
-    right: 44px;
+    /* position: absolute; */
+    top: 20px;
+    left: 280px;
 }
 
 .sort-up-black {
     display: none;
-    position: absolute;
-    top: -65%;
-    right: 44px;
+    /* position: absolute; */
+    top: 20px;
+    right: 280px;
 }
 
-.delete{
+.delete {
     /* width: 18px; */
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-.delete-purple{
+.delete-purple {
     display: none;
     /* width: 18px; */
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 
 .list {
     width: 80%;
-    margin: 30px 35px auto;
+    margin: 40px 35px auto;
     border: solid #C4C4C4 1px;
     border-radius: 10px;
-    padding: 5px 15px;
+    padding: 2px 15px;
     display: none;
 }
 
 
 
-.area-content{
+.area-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -165,16 +179,8 @@ h1 {
 
 }
 
-
-/* .icon {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-} */
-
-
-
-
+.area:hover{
+    border: solid #C4C4C4 1px;
+    border-radius: 10px;
+}
 
