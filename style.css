@@ -172,15 +172,36 @@ h1 {
     border: solid #C4C4C4 1px;
     border-radius: 10px;
 }
-.area{
+
+.area {
     word-break: break-all;
 }
+
+
+
+@media (min-width: 300px) and (max-width: 350px) {
+    .sorts {
+        position: absolute;
+        top: 106px;
+        left: 260px;
+    }
+
+
+}
+
+
+
+
 
 
 @media (min-width: 350px) and (max-width: 600px) {
     .container {
         /* width: 90vw;  */
     }
+
+    /* .area {
+        word-break: break-all;
+    } */
 
     input {
         width: 80%;
@@ -190,8 +211,8 @@ h1 {
     .sorts {
         position: absolute;
         top: 100px;
-        /* right: 10vw;  */
-        /* left: 80vw; */
+        /* right: -50vw;  */
+        left: 280px;
     }
 
 
@@ -214,10 +235,14 @@ h1 {
 
     .sorts {
         position: absolute;
-        top: 110px;
+        top: 105px;
         /* right: 10vw;  */
         /* left: 80vw; */
     }
+
+    /* .area {
+        word-break: break-all;
+    } */
 
     h1 {
         align-items: center;
@@ -241,4 +266,6 @@ h1 {
         font-size: 38px;
         margin-top: 15px;
     }
-} 
+
+
+}
