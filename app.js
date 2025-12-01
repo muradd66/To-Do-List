@@ -109,7 +109,7 @@ add.addEventListener("click", () => {
         number.textContent=`${index}. `
 
         p.prepend(number)
-
+ 
         div.append(p)
         div.append(icon)
         div.append(iconPurple)
