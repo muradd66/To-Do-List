@@ -172,7 +172,9 @@ h1 {
     border: solid #C4C4C4 1px;
     border-radius: 10px;
 }
-
+.area{
+    word-break: break-all;
+}
 
 
 @media (min-width: 350px) and (max-width: 600px) {
