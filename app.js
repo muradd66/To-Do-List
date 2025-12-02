@@ -210,7 +210,7 @@ add.addEventListener("click", () => {
         }
     
     })
-    }
+    }   
 })
 
 plus.addEventListener("click", () => {
