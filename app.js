@@ -1,5 +1,5 @@
 let input = document.querySelector("input")
-let add = document.querySelector(".adder")
+let add = document.querySelector(".add")
 let iconX = document.querySelector(".input-x")
 let iconXPurple = document.querySelector(".input-x-purple")
 let sortDowng = document.querySelector(".sort-down-gray")
@@ -9,7 +9,7 @@ let sortUpb = document.querySelector(".sort-up-black")
 let list = document.querySelector(".list")
 let inputContainer = document.querySelector(".input-container")
 let plus = document.querySelector(".plus")
-let sorts=document.querySelector(".sorts")
+let sorts = document.querySelector(".sorts")
 
 //x icon
 
@@ -51,101 +51,168 @@ sortUpb.addEventListener("mouseout", () => {
     }
 })
 
+//Sort
+
 sortDownb.addEventListener("click", () => {
     sort = true
     sortDowng.style.display = "none"
     sortDownb.style.display = "none"
     sortUpg.style.display = "block"
     sortUpb.style.display = "none"
+
+    let tasks = list.querySelectorAll(".area")
+    let taskArray = [...tasks]
+
+    taskArray.sort((a, b) => {
+        let textA = a.querySelector(".content").textContent.trim()
+        let textB = b.querySelector(".content").textContent.trim()
+
+        let newTextA = textA.split(".")
+        let newA
+        if (newTextA.length > 1) {
+            newA = newTextA[1].trim();
+        } else {
+            newA = textA;
+        }
+
+        let newTextB = textB.split(".")
+        let newB
+        if (newTextB.length > 1) {
+            newB = newTextB[1].trim()
+        } else {
+            newB = textB
+        }
+
+        let numA = parseFloat(newA)
+        let numB = parseFloat(newB)
+        
+        if (!isNaN(numA) && !isNaN(numB)) { 
+            return numB - numA;
+        } else {
+            return newB.localeCompare(newA);
+        }
+    })
+
+    list.innerHTML = "";
+    taskArray.forEach(task => list.appendChild(task))
+
 })
 
 sortUpb.addEventListener("click", () => {
-    sort = false
+    sort = false 
     sortUpg.style.display = "none"
     sortUpb.style.display = "none"
-    sortDowng.style.display = "block"
+    sortDowng.style.display = "inline-block" 
     sortDownb.style.display = "none"
-})
 
+    let tasks = list.querySelectorAll(".area")
+    let taskArray = [...tasks]
 
+    taskArray.sort((a, b) => {
+        let textA = a.querySelector(".content").textContent.trim()
+        let textB = b.querySelector(".content").textContent.trim()
 
+        let newTextA = textA.split(".")
+        let newA
+        if (newTextA.length > 1) {
+            newA = newTextA[1].trim();
+        } else {
+            newA = textA;
+        }
+
+        let newTextB = textB.split(".")
+        let newB
+        if (newTextB.length > 1) {
+            newB = newTextB[1].trim()
+        } else {
+            newB = textB
+        }
+
+        let numA = parseFloat(newA)
+        let numB = parseFloat(newB)
+        
+        if (!isNaN(numA) && !isNaN(numB)) { 
+            return numA - numB;
+        } else {
+            return newA.localeCompare(newB);
+        }
+    })
+
+    list.innerHTML = "";
+    taskArray.forEach(task => list.appendChild(task));
+
+});
 
 
 iconXPurple.addEventListener("click", () => {
     input.value = ''
 })
 
-let index=0
+let index = 0
 add.addEventListener("click", () => {
 
     let text = input.value
-    if (text != "") {
-        inputContainer.style.display = "none"
-        sorts.style.display="block"
-        input.value = ""
 
-        index=index+1
+    inputContainer.style.display = "none"
+    sorts.style.display = "block"
+    input.value = ""
 
-        let icon = document.createElement("img")
-        icon.src = "./x-icon.svg"
-        icon.style.display = "inline"
-        icon.className = "delete"
+    index = index + 1
 
-        let iconPurple = document.createElement("img")
-        iconPurple.src = "./x-icon-purple.svg"
-        iconPurple.className = "delete-purple"
+    let icon = document.createElement("img")
+    icon.src = "./x-icon.svg"
+    icon.style.display = "inline"
+    icon.className = "delete"
 
-        let area = document.createElement("div")
-        area.className = "area"
-        let div = document.createElement("div")
-        div.className = "area-content"
+    let iconPurple = document.createElement("img")
+    iconPurple.src = "./x-icon-purple.svg"
+    iconPurple.className = "delete-purple"
 
-        let p = document.createElement("p")
-        p.textContent = text
-        p.className = "content"
+    let area = document.createElement("div")
+    area.className = "area"
+    let div = document.createElement("div")
+    div.className = "area-content"
 
-        let number=document.createElement("span")
-        number.className="number"
-        number.textContent=`${index}. `
+    let p = document.createElement("p")
+    p.textContent = text
+    p.className = "content"
 
-        p.prepend(number)
- 
-        div.append(p)
-        div.append(icon)
-        div.append(iconPurple)
-        area.append(div)
-        list.append(area)
+    let number = document.createElement("span")
+    number.className = "number"
+    number.textContent = `${index}. `
 
-        list.style.display = "block"
+    p.prepend(number)
 
-        iconPurple.addEventListener("mouseout", () => {
-            icon.style.display = "inline-block"
-            iconPurple.style.display = "none"
-        })
+    div.append(p)
+    div.append(icon)
+    div.append(iconPurple)
+    area.append(div)
+    list.append(area)
 
-        icon.addEventListener("mouseover", () => {
-            icon.style.display = "none"
-            iconPurple.style.display = "inline-block"
-        })
+    list.style.display = "block"
 
+    iconPurple.addEventListener("mouseout", () => {
+        icon.style.display = "inline-block"
+        iconPurple.style.display = "none"
+    })
 
-        iconPurple.addEventListener("click", () => {
-            area.remove()
-            if (list.children.length== 0) {
-                list.style.display="none"
-                inputContainer.style.display = "block"
-                
-            }
+    icon.addEventListener("mouseover", () => {
+        icon.style.display = "none"
+        iconPurple.style.display = "inline-block"
+    })
 
+    iconPurple.addEventListener("click", () => {
+        area.remove()
+        if (list.children.length == 0) {
+            list.style.display = "none"
+            inputContainer.style.display = "block"
 
-        })
-    }
+        }
+
+    })
 
 })
 
 plus.addEventListener("click", () => {
     inputContainer.style.display = "block"
 })
-
-
-
