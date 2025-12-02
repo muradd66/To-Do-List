@@ -60,6 +60,7 @@ h1 {
 
 .adder:hover {
     cursor: pointer;
+    background-color: #9953F1;
 }
 
 
@@ -159,6 +160,9 @@ h1 {
     border-radius: 10px;
     padding: 2px 15px;
     display: none;
+    overflow-y: auto;
+    max-height: 210px;
+
 }
 
 
@@ -171,14 +175,15 @@ h1 {
 
 }
 
-.area:hover {
+/* .area:hover {
     border: solid #C4C4C4 1px;
     border-radius: 10px;
-}
+} */
 
 .area {
     word-break: break-all;
 }
+
 
 
 

@@ -150,7 +150,7 @@ iconXPurple.addEventListener("click", () => {
 
 let index = 0
 add.addEventListener("click", () => {
-
+    if (input.value!=""){
     let text = input.value
 
     inputContainer.style.display = "none"
@@ -208,9 +208,9 @@ add.addEventListener("click", () => {
             inputContainer.style.display = "block"
 
         }
-
+    
     })
-
+    }
 })
 
 plus.addEventListener("click", () => {
