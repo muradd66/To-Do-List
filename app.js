@@ -11,8 +11,7 @@ let inputContainer = document.querySelector(".input-container")
 let plus = document.querySelector(".plus")
 let sorts = document.querySelector(".sorts")
 
-//x icon
-
+// --- X İKONU V
 iconXPurple.addEventListener("mouseout", () => {
     iconXPurple.style.display = "none"
     iconX.style.display = "block"
@@ -23,8 +22,12 @@ iconX.addEventListener("mouseover", () => {
     iconXPurple.style.display = "block"
 })
 
-// sort icon
-let sort = false
+iconXPurple.addEventListener("click", () => {
+    input.value = ''
+})
+
+// --- SORT İKONU 
+let sort = false // false = Artan (default), true = Azalan
 
 sortDowng.addEventListener("mouseover", () => {
     sortDowng.style.display = "none"
@@ -36,7 +39,6 @@ sortDownb.addEventListener("mouseout", () => {
     if (sort == false) {
         sortDowng.style.display = "block"
     }
-
 })
 
 sortUpg.addEventListener("mouseover", () => {
@@ -51,13 +53,28 @@ sortUpb.addEventListener("mouseout", () => {
     }
 })
 
-//Sort
+// --- NÖMRƏLƏMƏNİ YENİLƏYƏN FUNKSİYA ---
+function updateNumbers() {
+    const tasks = list.querySelectorAll(".area");
+    tasks.forEach((task, i) => {
+        const numberSpan = task.querySelector(".number");
+        if (numberSpan) {
+            
+            numberSpan.textContent = `${i + 1}. `; 
+        }
+    });
+    
+    if (tasks.length === 0) {
+        sorts.style.display = "none";
+    }
+}
+
 
 sortDownb.addEventListener("click", () => {
     sort = true
     sortDowng.style.display = "none"
     sortDownb.style.display = "none"
-    sortUpg.style.display = "block"
+    sortUpg.style.display = "block" 
     sortUpb.style.display = "none"
 
     let tasks = list.querySelectorAll(".area")
@@ -67,39 +84,35 @@ sortDownb.addEventListener("click", () => {
         let textA = a.querySelector(".content").textContent.trim()
         let textB = b.querySelector(".content").textContent.trim()
 
+        
         let newTextA = textA.split(".")
-        let newA
-        if (newTextA.length > 1) {
-            newA = newTextA[1].trim();
-        } else {
-            newA = textA;
-        }
+        let newA = newTextA.length > 1 ? newTextA[1].trim() : textA;
 
+        
         let newTextB = textB.split(".")
-        let newB
-        if (newTextB.length > 1) {
-            newB = newTextB[1].trim()
-        } else {
-            newB = textB
-        }
+        let newB = newTextB.length > 1 ? newTextB[1].trim() : textB;
 
         let numA = parseFloat(newA)
         let numB = parseFloat(newB)
-        
-        if (!isNaN(numA) && !isNaN(numB)) { 
+
+        if (!isNaN(numA) && !isNaN(numB)) {
+            // Azalan rəqəm sıralaması
             return numB - numA;
         } else {
+            // Azalan mətn sıralaması
             return newB.localeCompare(newA);
         }
+
     })
 
     list.innerHTML = "";
     taskArray.forEach(task => list.appendChild(task))
-
+    updateNumbers()
 })
 
+
 sortUpb.addEventListener("click", () => {
-    sort = false 
+    sort = false
     sortUpg.style.display = "none"
     sortUpb.style.display = "none"
     sortDowng.style.display = "inline-block" 
@@ -112,106 +125,100 @@ sortUpb.addEventListener("click", () => {
         let textA = a.querySelector(".content").textContent.trim()
         let textB = b.querySelector(".content").textContent.trim()
 
+        
         let newTextA = textA.split(".")
-        let newA
-        if (newTextA.length > 1) {
-            newA = newTextA[1].trim();
-        } else {
-            newA = textA;
-        }
-
+        let newA = newTextA.length > 1 ? newTextA[1].trim() : textA;
+        
+        
         let newTextB = textB.split(".")
-        let newB
-        if (newTextB.length > 1) {
-            newB = newTextB[1].trim()
-        } else {
-            newB = textB
-        }
+        let newB = newTextB.length > 1 ? newTextB[1].trim() : textB;
 
         let numA = parseFloat(newA)
         let numB = parseFloat(newB)
-        
-        if (!isNaN(numA) && !isNaN(numB)) { 
+
+        if (!isNaN(numA) && !isNaN(numB)) {
+            // Artan rəqəm sıralaması
             return numA - numB;
         } else {
+            // Artan mətn sıralaması
             return newA.localeCompare(newB);
         }
     })
 
     list.innerHTML = "";
     taskArray.forEach(task => list.appendChild(task));
-
+    updateNumbers()
 });
 
 
-iconXPurple.addEventListener("click", () => {
-    input.value = ''
-})
-
-let index = 0
 add.addEventListener("click", () => {
-    if (input.value!=""){
-    let text = input.value
+    if (input.value.trim() !== "") {
+        let text = input.value.trim()
 
-    inputContainer.style.display = "none"
-    sorts.style.display = "block"
-    input.value = ""
+        inputContainer.style.display = "none"
+        sorts.style.display = "block"
+        input.value = ""
 
-    index = index + 1
+        
+        let icon = document.createElement("img")
+        icon.src = "./x-icon.svg"
+        icon.style.display = "inline"
+        icon.className = "delete"
 
-    let icon = document.createElement("img")
-    icon.src = "./x-icon.svg"
-    icon.style.display = "inline"
-    icon.className = "delete"
+        let iconPurple = document.createElement("img")
+        iconPurple.src = "./x-icon-purple.svg"
+        iconPurple.className = "delete-purple"
 
-    let iconPurple = document.createElement("img")
-    iconPurple.src = "./x-icon-purple.svg"
-    iconPurple.className = "delete-purple"
+        let area = document.createElement("div")
+        area.className = "area"
+        let div = document.createElement("div")
+        div.className = "area-content"
 
-    let area = document.createElement("div")
-    area.className = "area"
-    let div = document.createElement("div")
-    div.className = "area-content"
+        let p = document.createElement("p")
+        p.textContent = text
+        p.className = "content"
+        
+       
+        let number = document.createElement("span")
+        number.className = "number"
+        p.prepend(number) 
 
-    let p = document.createElement("p")
-    p.textContent = text
-    p.className = "content"
+        div.append(p)
+        div.append(icon)
+        div.append(iconPurple)
+        area.append(div)
+        list.append(area)
 
-    let number = document.createElement("span")
-    number.className = "number"
-    number.textContent = `${index}. `
+        list.style.display = "block"
+        
+       
+        updateNumbers() 
 
-    p.prepend(number)
+        
+        iconPurple.addEventListener("mouseout", () => {
+            icon.style.display = "inline-block"
+            iconPurple.style.display = "none"
+        })
 
-    div.append(p)
-    div.append(icon)
-    div.append(iconPurple)
-    area.append(div)
-    list.append(area)
+        icon.addEventListener("mouseover", () => {
+            icon.style.display = "none"
+            iconPurple.style.display = "inline-block"
+        })
 
-    list.style.display = "block"
-
-    iconPurple.addEventListener("mouseout", () => {
-        icon.style.display = "inline-block"
-        iconPurple.style.display = "none"
-    })
-
-    icon.addEventListener("mouseover", () => {
-        icon.style.display = "none"
-        iconPurple.style.display = "inline-block"
-    })
-
-    iconPurple.addEventListener("click", () => {
-        area.remove()
-        if (list.children.length == 0) {
-            list.style.display = "none"
-            inputContainer.style.display = "block"
-
-        }
     
-    })
-    }   
+        iconPurple.addEventListener("click", () => {
+            area.remove()
+
+            updateNumbers() 
+            
+            if (list.children.length == 0) {
+                list.style.display = "none"
+                inputContainer.style.display = "block"
+            }
+        })
+    }
 })
+
 
 plus.addEventListener("click", () => {
     inputContainer.style.display = "block"
